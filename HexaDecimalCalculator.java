@@ -1,15 +1,32 @@
 import java.util.Scanner;
-
+/**
+ * this class is used convert decimal to hexadecimal,
+ * hexadecimal to decimal and doing arithmetic operations on 
+ * hexadecimal number - Add, subtract, multiply and divide
+ * @author yash.porwal_metacube
+ *
+ */
 class HexCalc {
 	public static String decToHexa(int value) {
 		return Integer.toHexString(value);
 	}
 
+	
+	/**
+	 * it converts hexadecimal number to decimal number
+	 * @param value in string is hexadecimal number
+	 * @return decimal number in integer
+	 */
 	public static int hexaToDec(String value) {
 		int val = Integer.parseInt(value, 16);
 		return val;
 	}
 
+	/**
+	 * it adds two hexadecimal number while converting it into decimal number
+	 * @param a is the 1st hexadecimal number in the form of string
+	 * @param b is the 2nd hexadecimal number in the form of string
+	 */
 	public static void add(String a, String b) {
 		int ai = hexaToDec(a);
 		int bi = hexaToDec(b);
@@ -18,6 +35,11 @@ class HexCalc {
 		System.out.println(cs);
 	}
 
+	/**
+	 * it subtract two hexadecimal number while converting it into decimal number
+	 * @param a is the 1st hexadecimal number in the form of string
+	 * @param b is the 2nd hexadecimal number in the form of string
+	 */
 	public static void subtract(String a, String b) {
 		int ai = hexaToDec(a);
 		int bi = hexaToDec(b);
@@ -26,6 +48,11 @@ class HexCalc {
 		System.out.println(cs);
 	}
 
+	/**
+	 *it multiply two hexadecimal number while converting it into decimal number
+	 * @param a is the 1st hexadecimal number in the form of string
+	 * @param b is the 2nd hexadecimal number in the form of string
+	 */
 	public static void multiply(String a, String b) {
 		int ai = hexaToDec(a);
 		int bi = hexaToDec(b);
@@ -34,6 +61,11 @@ class HexCalc {
 		System.out.println(cs);
 	}
 
+	/**
+	 *it divide two hexadecimal number while converting it into decimal number
+	 * @param a is the 1st hexadecimal number in the form of string
+	 * @param b is the 2nd hexadecimal number in the form of string
+	 */
 	public static void divide(String a, String b) {
 		int ai = hexaToDec(a);
 		int bi = hexaToDec(b);
@@ -43,6 +75,11 @@ class HexCalc {
 	}
 }
 
+/**
+ * it is a hexaDecimal calculator
+ * @author yash.porwal_metacube
+ *
+ */
 public class HexaDecimalCalculator {
 	static String a;
 	static String b;
@@ -54,6 +91,9 @@ public class HexaDecimalCalculator {
 		}
 	}
 
+	/**
+	 * it takes input of two string from user
+	 */
 	public static void twoInputs() {
 		Scanner sc = new Scanner(System.in);
 
@@ -63,11 +103,18 @@ public class HexaDecimalCalculator {
 		b = sc.nextLine();
 	}
 
+	/**
+	 * it takes input of single integer value
+	 */
 	public static void aInput() {
 		Scanner sc = new Scanner(System.in);
 		ofChoice = sc.nextInt();
 	}
 
+	/**
+	 * this is the driver code of the program 
+	 * which is firstly represented in console(output) window 
+	 */
 	public static void firstPage() {
 		System.out.println("1.Arithmetic \n2. Relational \n3. Conversion \n0. Exit");
 		System.out.print("Enter your Choice: ");
@@ -93,10 +140,15 @@ public class HexaDecimalCalculator {
 		}
 	}
 
+	/**
+	 * this is the driver code of the program
+	 * which is specifically code to give 
+	 * what should be print in console(output) window 
+	 * when the user doing arithmetic in hexadecimal number
+	 */
 	public static void arithmeticPage() {
 
-		System.out
-				.println("1. Add \n2. Subtract \n3. Multiply \n4. Divide \n5. Back \n0.Exit");
+		System.out.println("1. Add \n2. Subtract \n3. Multiply \n4. Divide \n5. Back \n0.Exit");
 		System.out.print("Enter your Choice: ");
 		aInput();
 		switch (ofChoice) {
@@ -131,6 +183,12 @@ public class HexaDecimalCalculator {
 		}
 	}
 
+	/**
+	 * this is the driver code of the program
+	 * which is specifically code to give 
+	 * what should be print in console(output) window 
+	 * when the user finding relations between two hexadecimal number
+	 */
 	public static void relationPage() {
 		System.out.println("1. == \n2. > \n3. < \n4. Back \n5. Exit");
 		System.out.print("Enter your Choice: ");
@@ -158,25 +216,34 @@ public class HexaDecimalCalculator {
 		}
 	}
 	
-	
+	/**
+	 * it find the relation between two hexadecimal number
+	 * that is the numbers equal or greater or less than
+	 * @param caseValue what the user want (equality check or greater than check or less than check)
+	 * @return boolean value true/false on the basis of what answer it get
+	 */
 	public static boolean relations(int caseValue) {
 		twoInputs();
-		int value = a.compareTo(b);
+		int binary1 = Integer.parseInt(Integer.toBinaryString(Integer.parseInt(a, 16)));
+		int binary2 = Integer.parseInt(Integer.toBinaryString(Integer.parseInt(b, 16)));
 
-		if (caseValue == 1 && value == 0) {
+		if (caseValue == 1 && binary1 == binary2) {
 			return true;
-		} else if (caseValue == 2 && value>0) {
+		} else if (caseValue == 2 && binary1 > binary2) {
 			return true;
-		} else if (caseValue == 3 && value<0) {
+		} else if (caseValue == 3 && binary1 < binary2) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
+	/**
+	 * conversion form hexadecimal number to decimal or vice versa
+	 * then this is used
+	 */
 	public static void conversionPage() {
-		System.out
-				.println("1. From HexaDecimal to Decimal \n2. From Decimal to HexaDecimal \n3. Back \n0. Exit");
+		System.out.println("1. From HexaDecimal to Decimal \n2. From Decimal to HexaDecimal \n3. Back \n0. Exit");
 		System.out.print("Enter your Choice: ");
 		aInput();
 		String hex;
